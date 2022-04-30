@@ -1,0 +1,1 @@
+INSERT INTO eventos(start, end, title, body) VALUES ('2021-10-23 10:00:00','2021-10-30 10:00:00',"sdsdsd","sdsdsd")
