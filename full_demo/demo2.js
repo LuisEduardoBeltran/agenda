@@ -16,6 +16,9 @@ Jquery141(document).ready(function() {
       },
       //posible llamada
       eventRender : function(calEvent, $event) {
+         //  console.log("calEvent",calEvent);
+         //  console.log("event",$event);
+          //console.log("fecha sistema",new Date().getTime());
          if (calEvent.end.getTime() < new Date().getTime()) {
             $event.css("backgroundColor", "#");
             $event.find(".wc-time").css({
@@ -23,6 +26,64 @@ Jquery141(document).ready(function() {
                "border" : "1px solid #888"
             });
          }
+
+         setInterval(function()
+         {
+            //console.log("entro setinterval cada minuto");
+            var FIVE_MIN=5*60*1000;
+            // document.getElementById('video').autoplay = true;
+            // document.getElementById('video').muted = true; 
+            // document.getElementById('video').muted = false; 
+            // document.getElementById('video').play();
+
+            // const media = this.videoplayer.nativeElement;
+            // media.muted = true; // without this line it's not working although I have "muted" in HTML
+            // media.play();
+
+            // var audio = document.createElement("AUDIO")
+            // document.body.appendChild(audio);
+            // audio.src = "../sonido2.mp3"
+            
+            // document.body.addEventListener("mousemove", function () {
+            //     audio.play()
+            // })
+
+            // var myMusic = document.getElementById("music");
+            // function play(){
+            //    myMusic.muted = true;
+            //    myMusic.play() ;
+            //    myMusic.muted = false;
+            //    myMusic.play() ;
+            // }
+            // play();
+
+            // var myMusic = document.getElementById("video");
+            // myMusic.muted = true;
+            // myMusic.play() ;
+            // myMusic.muted = false;
+            //myMusic.play() ;           
+           
+
+            if
+            (
+               (new Date().getTime() - calEvent.start.getTime() ) < 0
+               && ( Math.abs( (new Date().getTime() - calEvent.start.getTime() ) ) < FIVE_MIN )
+            ) {
+               
+               //console.log('Delayed by more than 5 mins');
+               // alert('faltan 5 minutos..');
+               // var obj = document.createElement("audio");
+               // obj.src = "../sonido2.mp3"; 
+               // obj.play();	
+               document.getElementById("chingui").click();
+               
+               
+            }
+
+
+         },60000);
+         
+
       },
       draggable : function(calEvent, $event) {
          return calEvent.readOnly != true;
@@ -248,10 +309,12 @@ Jquery141(document).ready(function() {
          //callback(getEventData());
          var variable;
          var URL2= 'php/traer_eventos.php?start='+ variable;
+         //setInterval(function(){
          Jquery141.post(URL2,function (Respuesta){
             
-            console.log(Respuesta);
-            console.log(JSON.stringify(Respuesta));
+            //console.log("entro traer eventos");
+            // console.log(Respuesta);
+            // console.log(JSON.stringify(Respuesta));
             
             // $('#mensaje').html(arreglo[0]);
 
@@ -272,7 +335,7 @@ Jquery141(document).ready(function() {
                   {'id':5, 'start': new Date(year, month, day + 1, 15), 'end': new Date(year, month, day + 1, 17),'title':'Overlay event'}
                ]
              };
-             console.log('eventdata1',eventData1);
+            //  console.log('eventdata1',eventData1);
              Respuesta.forEach(function(part, index, theArray) {
                theArray[index]['start'] = new Date(theArray[index]['start']);
                theArray[index]['end'] = new Date(theArray[index]['end'] );
@@ -282,11 +345,17 @@ Jquery141(document).ready(function() {
                events: Respuesta
             };
             var events =   [Respuesta];
-            console.log('eventData: ',eventData)            
-            console.log('events: ',JSON.stringify(events))
+            // console.log('eventData: ',eventData)            
+            // console.log('events: ',JSON.stringify(events))
             //callback(JSON.stringify(eventData));
             callback(eventData);
-         }); //fin post
+         })
+        //} //funcion setinterval
+         //,60000)
+
+         //10000 10 segundos
+         //300000 5 min
+         ; //fin post
 
 
       }//fin data
@@ -301,7 +370,7 @@ Jquery141(document).ready(function() {
 
    function getEventData() {
 
-      console.log('entro getEventData');
+      //console.log('entro getEventData');
       var variable;
       var hora;
       var hora_1;

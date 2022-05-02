@@ -165,24 +165,27 @@ alert("entro");
 		var Jquery351 = jQuery.noConflict();
 		Jquery351(document).ready(function(){
             Jquery351("#chingui").click(function() {
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": true,
-                    "progressBar": true,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "showDuration": "300",
-                    "hideDuration": "1000",
-                    "timeOut": "5000",
-                    "extendedTimeOut": "1000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                toastr["error"]("&nbsp;&nbsp;&nbsp;Datos guardados con exito...");
+				var obj = document.createElement("audio");
+				obj.src = "../sonido2.mp3"; 
+				obj.play();	
+                // toastr.options = {
+                //     "closeButton": true,
+                //     "debug": false,
+                //     "newestOnTop": true,
+                //     "progressBar": true,
+                //     "positionClass": "toast-top-right",
+                //     "preventDuplicates": false,
+                //     "onclick": null,
+                //     "showDuration": "300",
+                //     "hideDuration": "1000",
+                //     "timeOut": "5000",
+                //     "extendedTimeOut": "1000",
+                //     "showEasing": "swing",
+                //     "hideEasing": "linear",
+                //     "showMethod": "fadeIn",
+                //     "hideMethod": "fadeOut"
+                // }
+                // toastr["error"]("&nbsp;&nbsp;&nbsp;Datos guardados con exito...");
             });
         });
 
@@ -246,9 +249,19 @@ alert("entro");
 <tr>
   <td><label for="lbl_articulo" style="padding:5px;"> Nombre </label></td>
   <td><input id="nombre_articulo" type="text" style="padding:3px;" /></td>
-  <td style="padding:5px;><button id="about_button" onClick="guardarArticulo()" ><img src="images/icon_guardar.png" width="50px"></button></td>
+  <td style="padding:5px;"><button id="about_button" onClick="guardarArticulo()" ><img src="images/icon_guardar.png" width="50px"></button></td>
 </tr>
 </table>
+
+<!-- <video id="video" src="../sonido2.mp3" autoplay> -->
+
+<video loop muted autoplay id="video">
+  <source src="../sonido2.mp3" type="video/mp4">
+</video>
+
+<!-- <audio controls autoplay id="music" class="inv" loop muted>
+	<source src="../sonido2.mp3" type="audio/mp4"> 
+</audio> -->
 
 				
 							

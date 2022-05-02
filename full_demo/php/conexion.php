@@ -17,7 +17,8 @@ $conectar = mysqli_connect('localhost','root','root1987',8080);
 $servername = "localhost";
 $database = "agenda";
 $username = "root";
-$password = "root1987";
+//$password = "root1987";
+$password = "chingui123";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
